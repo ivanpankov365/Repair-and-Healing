@@ -1,5 +1,5 @@
-<h2>Здесь вы можете добавить нового мастера</h2>
-<button class="button" (click)="newMaster()">добавить</button>
+<h2 *ngIf="!newMasterFlag">Здесь вы можете добавить нового мастера</h2>
+<button *ngIf="!newMasterFlag" class="button" (click)="newMaster()">добавить</button>
 <div *ngIf="newMasterFlag">
   <h2>Новый мастер</h2>
   <form (ngSubmit)="onSubmit(master)" #loginForm="ngForm">

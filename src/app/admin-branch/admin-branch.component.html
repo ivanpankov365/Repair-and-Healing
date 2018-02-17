@@ -1,4 +1,4 @@
-<h2>Введите данные администратора</h2>
+<h2 *ngIf="!adminVerify">Введите данные администратора</h2>
 <div *ngIf="!adminVerify">
   <div class="table">
     <table>
