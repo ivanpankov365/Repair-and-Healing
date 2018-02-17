@@ -1,0 +1,23 @@
+<div class="table">
+  <table border="1" width="100%" cellpadding="5">
+    <tr>
+      <th>Id Отдела</th>
+      <th>Id Мастера</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th> Номер телефона</th>
+    </tr>
+
+
+    <tr *ngFor="let master of selectedMasters" (click)="selectMaster(master)">
+      <td>{{master.departmentId}}</td>
+      <td>{{master.masterId}}</td>
+      <td>{{master.firstName}}</td>
+      <td>{{master.lastName}}</td>
+      <td>{{master.telephonNumber}}</td>
+    </tr>
+
+
+  </table>
+</div>
+

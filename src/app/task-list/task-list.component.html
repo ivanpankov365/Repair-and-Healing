@@ -1,0 +1,28 @@
+<div *ngIf="tasks.length>0">
+  <div class="table">
+    <table border="1" width="100%" cellpadding="5">
+      <tr>
+        <th>Id Задания</th>
+        <th>Id Мастера</th>
+        <th>Текст Заявки</th>
+        <th>Номер комнаты</th>
+        <th>email</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+      </tr>
+
+      <tr *ngFor="let task of tasks" (click)="selectTask(task)" >
+        <td>{{task.caseId}}</td>
+        <td>{{task.masterId}}</td>
+        <td>{{task.caseText}}</td>
+        <td>{{task.roomNumber}}</td>
+        <td>{{task.userEmail}}</td>
+        <td>{{task.userFirstName}}</td>
+        <td>{{task.userLastName}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div *ngIf="tasks.length==0">
+  <h2>Нет новых заявок</h2>
+</div>

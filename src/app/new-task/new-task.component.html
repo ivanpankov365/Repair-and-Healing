@@ -1,0 +1,105 @@
+<h2 *ngIf="!newTaskFlag">Здесь вы можете оставить свою заявку</h2>
+<button *ngIf="!newTaskFlag" class="button" (click)="newTask()">Оставить заявку</button><br><br><br>
+<div *ngIf="newTaskFlag">
+  <h2>Новая Заявка</h2>
+ <form (ngSubmit)="onSubmit(task)" #loginForm="ngForm">
+  <div class="table">
+    <table>
+      <tr>
+        <td>Тип Задания:</td>
+        <td><select [(ngModel)]="task.caseId" name="1">
+          <option value="электрика">электрика</option>
+          <option value="сантехника">сантехника</option>
+          <option value="плотницкие работы">плотницкие работы</option>
+          <option value="отопление">отопление</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>Описание неисправности:</td>
+        <td><input [(ngModel)]="task.caseText" name="1"/></td>
+      </tr>
+
+      <tr>
+        <td>Номер комнаты:</td>
+        <td>
+          <div>
+            <input type="text" class="room" id="roomNew"
+                   required
+                   [(ngModel)]="roomNumber" name="roomNew"
+                   pattern=^[0-9]+$
+                   #roomNew="ngModel"
+                   placeholder="1342">
+            <div [hidden]="roomNew.valid || roomNew.pristine"
+                 class="alert alert-danger">
+              <div class="required" [hidden]="!email.hasError('required')">*</div>
+
+            </div>
+
+
+          <select class="room_select" [(ngModel)]="build" name="1">
+            <option value="" disabled selected>Корпус</option>
+            <option value=" Б">Б</option>
+            <option value=" В">В</option>
+            <option value=" Г">Г</option>
+            <option value=" Д">Д</option>
+            <option value=" Е">Е</option>
+            <option value=" Ж">Ж</option>
+            <option value=" З">З</option>
+          </select>
+          <select class="room_select" [(ngModel)]="room" name="1">
+            <option value="" disabled selected>Комната</option>
+            <option value=" Правая">Правая</option>
+            <option value=" Левая">Левая</option>
+          </select>
+          </div>
+        </td>
+        <td><div [hidden]="roomNew.valid || roomNew.pristine"
+                 class="alert alert-danger">
+          <div [hidden]="!roomNew.hasError('pattern')">Неверный номер комнаты</div>
+        </div></td>
+      </tr>
+
+      <tr>
+
+          <td>Email Address</td>
+          <td>
+            <div class="form-group"><input type="text" class="form-control" id="emailaddress"
+                     required
+                     [(ngModel)]="task.userEmail" name="email"
+                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                     #email="ngModel"
+                     placeholder="joe@abc.com">
+
+        </div>
+        </td>
+        <td><div [hidden]="email.valid || email.pristine"
+                 class="alert alert-danger">
+          <div [hidden]="!email.hasError('pattern')">Формат email
+            <small><b>joe@abc.com</b></small>
+          </div>
+        </div></td>
+      </tr>
+      <tr>
+        <td>Имя:</td>
+        <td><input [(ngModel)]="task.userFirstName" name="first" required/></td>
+      </tr>
+      <tr>
+        <td>Фамилия:</td>
+        <td><input [(ngModel)]="task.userLastName" name="last" required/></td>
+      </tr>
+
+
+    </table>
+  </div>
+
+  <button type="submit" class="button" *ngIf="loginForm.form.valid" [disabled]= "!loginForm.form.valid">Submit</button>
+  <button type="submit" class="button_" *ngIf="!loginForm.form.valid" [disabled]= "!loginForm.form.valid">Submit</button>
+</form>
+
+</div>
+
+
+
+<div *ngIf="newTaskAddFlag">
+  <h2>Заявка отправлена!</h2>
+</div>

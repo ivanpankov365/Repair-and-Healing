@@ -1,0 +1,130 @@
+h2 {
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 2em;
+  color: #3d5c5c;
+  margin-bottom: 0;
+}
+
+.button {
+  position: relative;
+  padding: 8px 30px;
+  margin: 0px 8px 8px 0px;
+  float: left;
+  border-radius: 4px;
+  font-family: "Courier New", Courier;
+  font-size: 20px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #75A3A3;
+  border-bottom: 3px solid #006666;
+}
+
+.table {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  height: 100%;
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-family: "Courier New", Courier;
+  color: #3d5c5c;
+}
+
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+
+.tasks {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: auto;
+}
+
+.tasks li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .1em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+.tasks li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+
+.tasks li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.tasks .text {
+  position: relative;
+  top: -3px;
+}
+
+.tasks .badge {
+  display: inline-block;
+  font-family: "Courier New", Courier;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.tasks .case-text {
+  display: inline-block;
+  font-family: "Courier New", Courier;
+  font-size: small;
+  color: black;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+
+}
+
+.tasks .room {
+  display: inline-block;
+  font-family: "Courier New", Courier;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+}
+
+.tasks .name {
+  display: inline-block;
+  font-family: "Courier New", Courier;
+  font-size: small;
+  color: black;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+
+}

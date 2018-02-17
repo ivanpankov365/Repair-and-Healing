@@ -1,0 +1,83 @@
+h2 {
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 2em;
+  color: #3d5c5c;
+  margin-bottom: 0;
+}
+
+.button {
+  position: relative;
+  padding: 8px 30px;
+  margin: 0px 8px 8px 0px;
+  float: left;
+  border-radius: 4px;
+  font-family: "Courier New", Courier;
+  font-size: 20px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #75A3A3;
+  border-bottom: 3px solid #006666;
+}
+
+.button_ {
+  position: relative;
+  padding: 8px 30px;
+  margin: 0px 8px 8px 0px;
+  float: left;
+  border-radius: 4px;
+  font-family: "Courier New", Courier;
+  font-size: 20px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #DDDDDD;
+  border-bottom: 3px solid #006666;
+}
+
+.table {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  height: 100%;
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-family: "Courier New", Courier;
+  color: #3d5c5c;
+}
+
+input {
+  width: 218px;
+  height: 20px;
+  border: 1px solid  #75A3A3;
+  border-radius: 2px;
+}
+
+select {
+  height: 25px;
+  width: 220px;
+  border: 1px solid  #75A3A3;
+  border-radius: 2px;
+}
+
+.room{
+  width: 60px;
+  height: 21px;
+  border: 1px solid  #75A3A3;
+  border-radius: 2px;
+}
+
+.room_select{
+  width: 67px;
+  height: 25px;
+  border: 1px solid  #75A3A3;
+  border-radius: 2px;
+}
+
+.alert alert-danger{
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 1em;
+  color: red;
+  margin-bottom: 0;
+}

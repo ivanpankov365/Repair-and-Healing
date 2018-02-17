@@ -1,0 +1,69 @@
+<h2>Здесь вы можете добавить нового мастера</h2>
+<button class="button" (click)="newMaster()">добавить</button>
+<div *ngIf="newMasterFlag">
+  <h2>Новый мастер</h2>
+  <form (ngSubmit)="onSubmit(master)" #loginForm="ngForm">
+    <table class="table">
+      <tr>
+        <td>Отдел:</td>
+        <td><select [(ngModel)]="master.departmentId" name="default">
+          <option value="электрика">электрика</option>
+          <option value="сантехника">сантехника</option>
+          <option value="плотницкие работы">плотницкие работы</option>
+          <option value="отопление">отопление</option>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Имя:</td>
+        <td><input [(ngModel)]="master.firstName" required name="default"/></td>
+      </tr>
+      <tr>
+        <td>Фамилия:</td>
+        <td><input [(ngModel)]="master.lastName" required name="default"/></td>
+      </tr>
+      <tr>
+        <td>Номер телефона:</td>
+        <td>
+          <div class="form-group"><input type="text" class="form-control" id="emailaddress"
+                                         required
+                                         [(ngModel)]="master.telephonNumber" name="telephonNumber"
+                                         pattern="8[0-9]{10}"
+                                         #telephonNumber="ngModel"
+                                         placeholder="89101112345">
+          </div>
+        </td>
+        <td>
+          <div [hidden]="telephonNumber.valid || telephonNumber.pristine"
+               class="alert alert-danger">
+            <div [hidden]="!email.hasError('pattern')">Формат номера
+              <small><b>89101112345</b></small>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>login:</td>
+        <td><input [(ngModel)]="master.login" required name="default"/></td>
+      </tr>
+      <tr>
+        <td>password:</td>
+        <td><input [(ngModel)]="master.password" required name="default"/></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit" class="button" *ngIf="loginForm.form.valid" [disabled]="!loginForm.form.valid">Submit
+          </button>
+          <button type="submit" class="button_" *ngIf="!loginForm.form.valid" [disabled]="!loginForm.form.valid">
+            Submit
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div *ngIf="newMasterAddFlag">
+  <h2>Добавлен новый мастер</h2>
+</div>

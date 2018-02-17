@@ -1,0 +1,37 @@
+<div *ngIf="!masterVerify">
+  <h2>Введите данные мастера</h2>
+  <div class="table">
+    <table>
+      <tr>
+        <td>login</td>
+        <td><input [(ngModel)]="master.login"></td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td><input type="password" [(ngModel)]="master.password"></td>
+      </tr>
+      <br>
+
+      <button class="button" (click)="masterCheck(master)">Вход</button>
+    </table>
+  </div>
+</div>
+<div *ngIf="masterVerify && deleteTaskFlag">
+  <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify"></app-master-task-list>
+  <br>
+  <div *ngIf="selectedTask">
+    <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+  </div>
+</div>
+<div *ngIf="masterVerify && !deleteTaskFlag">
+  <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify"></app-master-task-list>
+  <br>
+  <div *ngIf="selectedTask">
+    <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+  </div>
+</div>
+
+
+<div *ngIf="!masterVerify && masterCheckFlag">
+  <h2>Введены неверные данные</h2>
+</div>
