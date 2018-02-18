@@ -1,6 +1,4 @@
-<h2 *ngIf="!newMasterFlag">Здесь вы можете добавить нового мастера</h2>
-<button *ngIf="!newMasterFlag" class="button" (click)="newMaster()">добавить</button>
-<div *ngIf="newMasterFlag">
+<div *ngIf="!newMasterAddFlag">
   <h2>Новый мастер</h2>
   <form (ngSubmit)="onSubmit(master)" #loginForm="ngForm">
     <table class="table">
@@ -36,7 +34,7 @@
         <td>
           <div [hidden]="telephonNumber.valid || telephonNumber.pristine"
                class="alert alert-danger">
-            <div [hidden]="!email.hasError('pattern')">Формат номера
+            <div [hidden]="!telephonNumber.hasError('pattern')">Формат номера
               <small><b>89101112345</b></small>
             </div>
           </div>
@@ -44,11 +42,44 @@
       </tr>
       <tr>
         <td>login:</td>
-        <td><input [(ngModel)]="master.login" required name="default"/></td>
+        <td>
+          <div class="form-group"><input type="text" class="form-control" id="login"
+                                         required
+                                         [(ngModel)]="master.login" name="login"
+                                         pattern="^[a-zA-Z]+$"
+                                         #login="ngModel"
+                                         placeholder="master">
+          </div>
+        </td>
+        <td>
+          <div [hidden]="login.valid || login.pristine"
+               class="alert alert-danger">
+            <div [hidden]="!login.hasError('pattern')">
+              Только латинские символы
+            </div>
+          </div>
+        </td>
+
       </tr>
       <tr>
         <td>password:</td>
-        <td><input [(ngModel)]="master.password" required name="default"/></td>
+        <td>
+          <div class="form-group"><input type="text" class="form-control" id="password"
+                                         required
+                                         [(ngModel)]="master.password" name="password"
+                                         pattern="^[a-zA-Z]+$"
+                                         #password="ngModel"
+                                         placeholder="password">
+          </div>
+        </td>
+        <td>
+          <div [hidden]="password.valid || password.pristine"
+               class="alert alert-danger">
+            <div [hidden]="!password.hasError('pattern')">
+              Только латинские символы
+            </div>
+          </div>
+        </td>
       </tr>
 
       <tr>
@@ -64,6 +95,6 @@
     </table>
   </form>
 </div>
-<div *ngIf="newMasterAddFlag">
+<div *ngIf="newMasterAddFlag" class="text">
   <h2>Добавлен новый мастер</h2>
 </div>

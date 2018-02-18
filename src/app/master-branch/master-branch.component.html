@@ -17,24 +17,24 @@
   </div>
 </div>
 <div *ngIf="masterVerify && deleteTaskFlag">
-  <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify"></app-master-task-list>
+  <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify" ></app-master-task-list>
   <br>
   <div *ngIf="selectedTask">
        <div class="add_table">
       <h2 class="text">Вы уверены, что задание выполнено?</h2>
-      <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
-      <button class="button" (click)="deleteTaskCheck()">Выбрать другое задание</button>
+      <button class="button_add" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+      <button class="button_other" (click)="deleteTaskCheck()">Выбрать другое задание</button>
     </div>
   </div>
 </div>
 <div *ngIf="masterVerify && !deleteTaskFlag">
-  <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify"></app-master-task-list>
+  <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify" ></app-master-task-list>
   <br>
   <div *ngIf="selectedTask">
      <div class="add_table">
       <h2 class="text">Вы уверены, что задание выполнено?</h2>
-       <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
-       <button class="button" (click)="deleteTaskCheck()">Выбрать другое задание</button>
+       <button class="button_add" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+       <button class="button_other" (click)="deleteTaskCheck()">Выбрать другое задание</button>
     </div>
 
   </div>

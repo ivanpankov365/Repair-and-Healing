@@ -137,4 +137,8 @@ export class AdminBranchComponent {
     this.taskListFlag = false;
   }
 
+  masterAddedFlag:boolean;
+  masterAdded(flag: boolean) {
+    this.masterAddedFlag = flag;
+  }
 }

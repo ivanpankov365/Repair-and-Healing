@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Master} from '../master';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Task} from '../task';
@@ -20,10 +20,6 @@ export class NewMasterComponent {
   newMasterFlag: boolean;
   newMasterAddFlag: boolean;
 
-  newMaster() {
-    this.newMasterFlag = true;
-    this.newMasterAddFlag = false;
-  }
 
   postMaster(master: Master) {
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
@@ -37,6 +33,7 @@ export class NewMasterComponent {
   onSubmit(master: Master) {
     this.newMasterFlag = false;
     this.newMasterAddFlag = true;
+    this.masterAdded.emit(true);
     this.postMaster(master).subscribe(
       (data: Master) => {
         this.receivedMaster = data;
@@ -44,5 +41,7 @@ export class NewMasterComponent {
       error => console.log(error)
     );
   }
+
+  @Output() masterAdded = new EventEmitter<boolean>();
 
 }

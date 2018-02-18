@@ -19,6 +19,9 @@ h2 {
   background-color: #519171;
   border-bottom: 3px solid #006666;
 }
+.button:hover{
+  background-color: #3C6650;
+}
 
 .button_ {
   position: relative;
@@ -66,4 +69,8 @@ select {
   width: 220px;
   border: 1px solid  #75A3A3;
   border-radius: 2px;
+}
+
+.text{
+  text-align: center;
 }

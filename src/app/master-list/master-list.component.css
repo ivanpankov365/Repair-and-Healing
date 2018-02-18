@@ -20,6 +20,9 @@ h2 {
   border-bottom: 3px solid #006666;
 }
 
+.button:hover{
+  background-color: #3C6650;
+}
 
 
 .table_un_focus {

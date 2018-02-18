@@ -98,3 +98,15 @@ input {
 .text{
   text-align: center;
 }
+
+.button_add:hover{
+  background-color: #3C6650;
+}
+
+.button_other:hover{
+  background-color: #3C6650;
+}
+
+.button:hover{
+  background-color: #3C6650;
+}

@@ -62,13 +62,11 @@ export class MasterBranchComponent{
   masterCheck(login: string, password: string) {
     this.masterCheckFlag = true;
     this.loginPost(login, password);
-    console.log('MASTER ');
-    console.log(this.masterVerify);
   }
 
   selectedTask: Task;
-
   taskSelect(acceptTask: Task) {
+
     this.selectedTask = acceptTask;
   }
 
@@ -96,7 +94,7 @@ export class MasterBranchComponent{
 
   deleteTaskCheck(){
     this.selectedTask = null;
-
+    this.deleteTaskFlag = !this.deleteTaskFlag;
   }
 
 }

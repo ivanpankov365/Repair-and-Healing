@@ -21,6 +21,12 @@
   <button class="button" (click)="newMaster()">Добавить нового мастера</button>
   <br><br><br>
 </div>
+
+<div *ngIf="adminVerify && (masterAddedFlag)" class="panel">
+  <button class="button" (click)="taskList()">Отобразить список заявок</button>
+  <button class="button" (click)="newMaster()">Добавить нового мастера</button>
+  <br><br><br>
+</div>
 <div *ngIf="!adminVerify && adminCheckFlag">
   <h2>Введены неверные данные</h2>
 </div>
@@ -45,5 +51,5 @@
   </div>
 </div>
 <div *ngIf="newMasterFlag">
-  <app-new-master></app-new-master>
+  <app-new-master  (masterAdded)="masterAdded($event)"></app-new-master>
 </div>
