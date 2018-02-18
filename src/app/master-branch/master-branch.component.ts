@@ -10,47 +10,60 @@ import {Localhost} from '../localhost';
   templateUrl: './master-branch.component.html',
   styleUrls: ['./master-branch.component.css']
 })
-export class MasterBranchComponent {
+export class MasterBranchComponent{
 
   master: Master = new Master();
+  login: string;
+  password: string;
   localhost: Localhost = new Localhost();
 
   constructor(private http: HttpClient) {
-    console.log(this.master);
   }
 
-  postMaster(master: Master) {
-    return this.http.post(this.localhost.checkMaster, master);
+  postMaster(login: string){
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
+      localStorage.getItem('jwt'));
+    var options = {headers: headers, withCredentials: true};
+    return this.http.post(this.localhost.checkMaster, login, options);
   }
 
-  masterVerify: boolean; // ответ от сервера
+
+  masterVerify: Master; // ответ от сервера
+  loginVerify: boolean;
   masterCheckFlag: boolean;
 
-  loginPost(master: Master) {
+  loginPost(login: string, password: string) {
     var headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     var options = {headers: headers};
     const body = {
-      email: master.login,
-      password: master.password,
+      email: login,
+      password: password,
     };
     this.http.post(this.localhost.login, body, options).subscribe((data) => {
         localStorage.setItem('jwt', data['token']);
         if (data['role'] == '[MASTER]') {
-          this.masterVerify = true;
+          this.loginVerify = true;
+          this. postMaster(login).subscribe((data : Master)=> {
+            console.log('POOOOOOOOint')
+            this.masterVerify = data;
+            console.log(this.master);
+          });
         }
       }, (err) => {
         console.log(err.status);
         if (err.status == 403) {
-          this.masterVerify = false;
+          this.masterVerify = null;
         }
       }
     );
 
   }
 
-  masterCheck(master: Master) {
+  masterCheck(login: string, password: string) {
     this.masterCheckFlag = true;
-    this.loginPost(master);
+    this.loginPost(login, password);
+    console.log('MASTER ');
+    console.log(this.masterVerify);
   }
 
   selectedTask: Task;
@@ -81,5 +94,9 @@ export class MasterBranchComponent {
 
   }
 
+  deleteTaskCheck(){
+    this.selectedTask = null;
+
+  }
 
 }

@@ -4,15 +4,15 @@
     <table>
       <tr>
         <td>login</td>
-        <td><input [(ngModel)]="master.login"></td>
+        <td><input [(ngModel)]="login"></td>
       </tr>
       <tr>
         <td>password</td>
-        <td><input type="password" [(ngModel)]="master.password"></td>
+        <td><input type="password" [(ngModel)]="password"></td>
       </tr>
       <br>
 
-      <button class="button" (click)="masterCheck(master)">Вход</button>
+      <button class="button" (click)="masterCheck(login, password)">Вход</button>
     </table>
   </div>
 </div>
@@ -20,18 +20,27 @@
   <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify"></app-master-task-list>
   <br>
   <div *ngIf="selectedTask">
-    <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+       <div class="add_table">
+      <h2 class="text">Вы уверены, что задание выполнено?</h2>
+      <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+      <button class="button" (click)="deleteTaskCheck()">Выбрать другое задание</button>
+    </div>
   </div>
 </div>
 <div *ngIf="masterVerify && !deleteTaskFlag">
   <app-master-task-list (taskSelect)="taskSelect($event)" [master]="masterVerify"></app-master-task-list>
   <br>
   <div *ngIf="selectedTask">
-    <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+     <div class="add_table">
+      <h2 class="text">Вы уверены, что задание выполнено?</h2>
+       <button class="button" (click)="deleteTask(selectedTask)">Задание выполнено</button>
+       <button class="button" (click)="deleteTaskCheck()">Выбрать другое задание</button>
+    </div>
+
   </div>
 </div>
 
 
-<div *ngIf="!masterVerify && masterCheckFlag">
+<div *ngIf="!loginVerify && masterCheckFlag">
   <h2>Введены неверные данные</h2>
 </div>

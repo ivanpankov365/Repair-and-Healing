@@ -2,7 +2,8 @@ h1 {
   text-align: center;
   margin-bottom: 0;
   font-size: 3em;
-  color: #3d5c5c;
+  font-family: "Adobe Fan Heiti Std B";
+  color: #3C6650;
   margin-bottom: 0;
 }
 
@@ -23,8 +24,9 @@ h1 {
   font-size: 20px;
   color: #FFF;
   text-decoration: none;
-  background-color: #75A3A3;
+  background-color: #519171;
   border-bottom: 3px solid #006666;
 }
+
 
 

@@ -21,33 +21,11 @@ export class NewTaskComponent {
   newTaskFlag: boolean;
   newTaskAddFlag: boolean;
 
-  newTask() {
-    this.newTaskFlag = true;
-    this.newTaskAddFlag = false;
-  }
-
   postTask(task: Task) {
     return this.http.post(this.localhost.addNewTask, task);
   }
 
   receivedTask: Task; // ответ от сервера
-  addNewTask(task: Task) {
-    this.newTaskFlag = false;
-    this.newTaskAddFlag = true;
-    task.roomNumber = this.roomNumber + this.build + this.room;
-    this.postTask(task).subscribe(
-      (data: Task) => {
-        this.receivedTask = data;
-      },
-      error => console.log(error)
-    );
-  }
-
-  taskIsValid: boolean;
-  newTaskIsValid(){
-    this.taskIsValid = true;
-  }
-
   build: string;
   room: string;
   roomNumber: string;

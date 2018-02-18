@@ -1,6 +1,4 @@
-<h2 *ngIf="!newTaskFlag">Здесь вы можете оставить свою заявку</h2>
-<button *ngIf="!newTaskFlag" class="button" (click)="newTask()">Оставить заявку</button><br><br><br>
-<div *ngIf="newTaskFlag">
+<div *ngIf="!newTaskAddFlag">
   <h2>Новая Заявка</h2>
  <form (ngSubmit)="onSubmit(task)" #loginForm="ngForm">
   <div class="table">

@@ -123,6 +123,13 @@ export class AdminBranchComponent {
     this.taskListFlag = false;
   }
 
+
+  otherTask(){
+    this.taskListFlag = false;
+    this.selectedTask = null;
+    this.taskListFlag = false;
+  }
+
   newMasterFlag: boolean;
 
   newMaster() {

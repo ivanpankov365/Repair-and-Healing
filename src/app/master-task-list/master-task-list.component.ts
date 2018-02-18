@@ -22,6 +22,7 @@ export class MasterTaskListComponent implements OnInit {
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
       localStorage.getItem('jwt'));
     var options = {headers: headers, withCredentials: true};
+    console.log('token '+ options);
     return this.http.get(this.localhost.taskList, options);
   }
 
@@ -31,12 +32,18 @@ export class MasterTaskListComponent implements OnInit {
     this.count = 0;
     this.getTaskList().subscribe((data: Task[]) => {
         for (let task of data) {
-          if (task.masterId == this.master.masterId) {
+         if (task.masterId == this.master.masterId) {
             this.tasks[this.count] = task;
             this.count = this.count + 1;
           }
         }
+      }, (err) => {
+        console.log(err.status);
+        if (err.status == 403) {
+         console.log('ERROR 403');
+        }
       }
+
     );
   }
 

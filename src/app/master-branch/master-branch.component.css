@@ -2,7 +2,7 @@ h2 {
   text-align: left;
   margin-bottom: 0;
   font-size: 2em;
-  color: #3d5c5c;
+  color: #3C6650;
   margin-bottom: 0;
 }
 
@@ -16,7 +16,7 @@ h2 {
   font-size: 20px;
   color: #FFF;
   text-decoration: none;
-  background-color: #75A3A3;
+  background-color: #519171;
   border-bottom: 3px solid #006666;
 }
 
@@ -30,4 +30,29 @@ h2 {
   font-size: 20px;
   font-family: "Courier New", Courier;
   color: #3d5c5c;
+}
+
+input {
+  width: 218px;
+  height: 20px;
+  border: 1px solid  #75A3A3;
+  border-radius: 2px;
+}
+
+.add_table {
+  position: absolute;
+  height: 400px;
+  width: 700px;
+  top: 40%;
+  left: 35%;
+  margin: -125px 0 0 -125px;
+  z-index: 200;
+  background-color: snow;
+  border: solid 5px #3C6650;
+  border-radius: 8px;
+
+}
+
+.text{
+  text-align: center;
 }
