@@ -47,7 +47,9 @@ export class MasterListComponent implements OnInit {
   @Input() selectedTask: Task;
   @Output() masterSelect = new EventEmitter<Master>();
 
+  selectFlag: boolean;
   selectMaster(master) {
+    this.selectFlag = true;
     this.masterSelect.emit(master);
     this.selectedMasterList = master;
   }

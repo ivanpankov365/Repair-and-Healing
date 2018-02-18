@@ -1,7 +1,5 @@
-<div *ngIf="tasks.length>0">
 
-  <div class="table_master_task">
-    <table border="1" width="100%" cellpadding="5">
+    <table *ngIf="tasks.length>0" border="1" width="100%" >
       <tr>
         <th>Id Задания</th>
         <th>Id Мастера</th>
@@ -22,9 +20,7 @@
         <td>{{task.userLastName}}</td>
       </tr>
     </table>
-  </div>
 
-</div>
 <div *ngIf="tasks.length==0">
   <h2>Нет новых заявок</h2>
 </div>

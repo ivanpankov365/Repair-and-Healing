@@ -16,7 +16,7 @@
     </table>
   </div>
 </div>
-<div *ngIf="adminVerify">
+<div *ngIf="adminVerify && (!taskListFlag && !newMasterFlag)">
   <button class="button" (click)="taskList()">Отобразить список заявок</button>
   <button class="button" (click)="newMaster()">Добавить нового мастера</button>
   <br><br><br>
@@ -25,27 +25,22 @@
   <h2>Введены неверные данные</h2>
 </div>
 <div *ngIf="!ready">
-  <table>
-    <td>
+
       <div *ngIf="taskListFlag">
         <app-task-list (taskSelect)="taskSelect($event)"></app-task-list>
       </div>
-    </td>
-    <td>
+
       <div *ngIf="selectedTask && taskSelectFlag && taskListFlag">
         <app-master-list (masterSelect)="masterSelect($event)" [selectedTask]="selectedTask"></app-master-list>
       </div>
       <div *ngIf="selectedTask && !taskSelectFlag && taskListFlag">
         <app-master-list (masterSelect)="masterSelect($event)" [selectedTask]="selectedTask"></app-master-list>
       </div>
-    </td>
-  </table>
-  <div *ngIf="selectedTask">
-    <h2>Task: {{selectedTask.caseText}}</h2>
-  </div>
-  <div *ngIf="selectedMaster">
-    <h2>Master: {{selectedMaster.firstName}}</h2>
-    <button class="button" (click)="appointMaster()">Назначить Мастера</button>
+
+  <div *ngIf="selectedTask && selectedMaster">
+    <!--<h2>Task: {{selectedTask.caseText}}</h2>
+    <h2>Master: {{selectedMaster.firstName}}</h2>-->
+    <button class="button_select" (click)="appointMaster()">Назначить Мастера</button>
   </div>
 </div>
 <div *ngIf="newMasterFlag">

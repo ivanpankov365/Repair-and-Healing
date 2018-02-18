@@ -62,7 +62,9 @@ export class TaskListComponent implements OnInit {
   @Input() selectedTaskList: Task;
   @Output() taskSelect = new EventEmitter<Task>();
 
+  selectFlag: boolean;
   selectTask(task: Task) {
+    this.selectFlag = true;
     this.taskSelect.emit(task);
     this.selectedTaskList = task;
   }
