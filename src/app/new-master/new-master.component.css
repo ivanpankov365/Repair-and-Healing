@@ -74,3 +74,9 @@ select {
 .text{
   text-align: center;
 }
+
+.new_master {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}

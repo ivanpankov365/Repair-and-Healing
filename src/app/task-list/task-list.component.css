@@ -115,5 +115,10 @@ tbody:hover tr:hover td {
 
 }
 
+.task_list {
+  position: absolute;
+  top: 30%;
+  left: 0%;
+}
 
 

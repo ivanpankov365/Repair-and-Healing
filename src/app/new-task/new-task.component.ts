@@ -12,23 +12,24 @@ export class NewTaskComponent {
 
   task: Task = new Task();
   localhost: Localhost = new Localhost();
+  newTaskFlag: boolean;
+  newTaskAddFlag: boolean;
+  receivedTask: Task; // ответ от сервера
+  build: string;
+  room: string;
+  roomNumber: string;
 
 
   constructor(private http: HttpClient) {
     console.log(this.task);
   }
 
-  newTaskFlag: boolean;
-  newTaskAddFlag: boolean;
 
   postTask(task: Task) {
     return this.http.post(this.localhost.addNewTask, task);
   }
 
-  receivedTask: Task; // ответ от сервера
-  build: string;
-  room: string;
-  roomNumber: string;
+
 
   onSubmit(task: Task){
 

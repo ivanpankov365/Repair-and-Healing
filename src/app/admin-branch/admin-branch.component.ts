@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Localhost} from '../localhost';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-
+import {RequestService} from '../request-service';
 
 
 @Component({
@@ -20,14 +20,21 @@ export class AdminBranchComponent {
   localhost: Localhost = new Localhost();
   token: string;
   role: string;
+  adminVerify: boolean; // ответ от сервера
+  adminCheckFlag: boolean;
+  selectTaskFlag: boolean;
+  otherTaskFlag: boolean;
+  refreshFlag: boolean;
+  selectedTask: Task;
+  taskSelectFlag: boolean;
+  selectedMaster: Master;
+  task: Task;
+  ready: boolean;
+  newMasterFlag: boolean;
+  masterAddedFlag: boolean;
 
   constructor(private http: HttpClient) {
   }
-
-  postAdmin(admin: Admin) {
-    return this.http.post(this.localhost.checkAdmin, admin);
-  }
-
 
   loginPost(admin: Admin) {
     var headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
@@ -51,8 +58,6 @@ export class AdminBranchComponent {
 
   }
 
-  adminVerify: boolean; // ответ от сервера
-  adminCheckFlag: boolean;
 
   adminCheck(admin: Admin) {
     this.adminCheckFlag = true;
@@ -61,24 +66,24 @@ export class AdminBranchComponent {
   }
 
 
-  taskListFlag: boolean;
+  taskListFlag: boolean = false;
 
   taskList() {
     this.taskListFlag = true;
+    this.taskSelectFlag = false;
     this.newMasterFlag = false;
     this.ready = false;
+    this.otherTaskFlag = true;
+    this.refreshFlag = !this.refreshFlag;
   }
 
-  selectedTask: Task;
-  taskSelectFlag: boolean;
 
   taskSelect(acceptTask: Task) {
     this.selectedTask = acceptTask;
-    this.taskSelectFlag = !this.taskSelectFlag;
+    console.log(this.selectedTask);
     this.selectedMaster = null;
   }
 
-  selectedMaster: Master;
 
   masterSelect(acceptMaster: Master) {
     this.selectedMaster = acceptMaster;
@@ -86,22 +91,15 @@ export class AdminBranchComponent {
 
 
   removeTask(task: Task) {
-    var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
-      localStorage.getItem('jwt'));
-    var options = {headers: headers, withCredentials: true};
-
-    return this.http.post(this.localhost.deleteTask, task, options);
+    let options = new RequestService();
+    return this.http.post(this.localhost.deleteTask, task, options.getOptions());
   }
 
   addTask(task: Task) {
-    var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
-      localStorage.getItem('jwt'));
-    var options = {headers: headers, withCredentials: true};
-    return this.http.post(this.localhost.addNewTask, task, options);
+    let options = new RequestService();
+    return this.http.post(this.localhost.addNewTask, task, options.getOptions());
   }
 
-  task: Task;
-  ready: boolean;
 
   appointMaster() {
     this.removeTask(this.selectedTask).subscribe(
@@ -114,30 +112,32 @@ export class AdminBranchComponent {
     this.addTask(this.selectedTask).subscribe(
       (data: Task) => {
         this.task = data;
+        this.selectedTask = null;
+        this.selectedMaster = null;
+        this.otherTaskFlag = true;
+        this.refreshFlag = !this.refreshFlag;
       },
       error => console.log(error)
     );
-    this.ready = true;
-    this.selectedTask = null;
-    this.selectedMaster = null;
-    this.taskListFlag = false;
+
   }
 
 
-  otherTask(){
-    this.taskListFlag = false;
+  otherTask() {
+    this.selectTaskFlag = false;
     this.selectedTask = null;
-    this.taskListFlag = false;
+    this.otherTaskFlag = true;
+    this.refreshFlag = !this.refreshFlag;
   }
 
-  newMasterFlag: boolean;
 
   newMaster() {
     this.newMasterFlag = true;
     this.taskListFlag = false;
+    this.taskSelectFlag = false;
   }
 
-  masterAddedFlag:boolean;
+
   masterAdded(flag: boolean) {
     this.masterAddedFlag = flag;
   }

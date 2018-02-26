@@ -106,3 +106,16 @@ input {
 .button:hover{
   background-color: #3C6650;
 }
+
+.master_verify {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+
+.master_verify_false {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+}
+

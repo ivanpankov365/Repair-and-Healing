@@ -1,48 +1,26 @@
+<table *ngIf="tasks.length>0" [ngClass]="{'table_un_focus': selectFlag, 'table_focus': !selectFlag}" class="task_list">
+  <tr>
+    <th>Id Задания</th>
+    <th>Id Мастера</th>
+    <th>Текст Заявки</th>
+    <th>Номер комнаты</th>
+    <th>email</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+  </tr>
 
-    <table *ngIf="tasks.length>0 && selectFlag" class = "table_un_focus">
-      <tr>
-        <th>Id Задания</th>
-        <th>Id Мастера</th>
-        <th>Текст Заявки</th>
-        <th>Номер комнаты</th>
-        <th>email</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-      </tr>
+  <tr *ngFor="let task of tasks" (click)="selectTask(task)">
+    <td>{{task.caseId}}</td>
+    <td>{{task.masterId}}</td>
+    <td>{{task.caseText}}</td>
+    <td>{{task.roomNumber}}</td>
+    <td>{{task.userEmail}}</td>
+    <td>{{task.userFirstName}}</td>
+    <td>{{task.userLastName}}</td>
+  </tr>
+</table>
 
-      <tr *ngFor="let task of tasks" (click)="selectTask(task)">
-        <td>{{task.caseId}}</td>
-        <td>{{task.masterId}}</td>
-        <td>{{task.caseText}}</td>
-        <td>{{task.roomNumber}}</td>
-        <td>{{task.userEmail}}</td>
-        <td>{{task.userFirstName}}</td>
-        <td>{{task.userLastName}}</td>
-      </tr>
-    </table>
 
-    <table *ngIf="tasks.length>0 && !selectFlag"  class = "table_focus">
-      <tr>
-        <th>Id Задания</th>
-        <th>Id Мастера</th>
-        <th>Текст Заявки</th>
-        <th>Номер комнаты</th>
-        <th>email</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-      </tr>
-
-      <tr *ngFor="let task of tasks" (click)="selectTask(task)">
-        <td>{{task.caseId}}</td>
-        <td>{{task.masterId}}</td>
-        <td>{{task.caseText}}</td>
-        <td>{{task.roomNumber}}</td>
-        <td>{{task.userEmail}}</td>
-        <td>{{task.userFirstName}}</td>
-        <td>{{task.userLastName}}</td>
-      </tr>
-    </table>
-
-<div *ngIf="tasks.length==0">
+<div *ngIf="tasks.length==0" class="task_list">
   <h2>Нет новых заявок</h2>
 </div>

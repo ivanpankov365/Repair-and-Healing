@@ -3,6 +3,7 @@ import {Task} from '../task';
 import {Master} from '../master';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Localhost} from '../localhost';
+import {RequestService} from '../request-service';
 
 @Component({
   selector: 'app-master-task-list',
@@ -14,16 +15,17 @@ export class MasterTaskListComponent implements OnInit {
   task: Task;
   tasks: Task[] = [];
   localhost: Localhost = new Localhost();
+  @Input() master: Master;
+  @Output() taskSelect = new EventEmitter<Task>();
+  selectFlag: boolean;
 
   constructor(private http: HttpClient) {
   }
 
   getTaskList() {
-    var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
-      localStorage.getItem('jwt'));
-    var options = {headers: headers, withCredentials: true};
+    let options = new RequestService();
     console.log('token '+ options);
-    return this.http.get(this.localhost.taskList, options);
+    return this.http.get(this.localhost.taskList, options.getOptions());
   }
 
   count: number;
@@ -47,16 +49,9 @@ export class MasterTaskListComponent implements OnInit {
     );
   }
 
-  @Input() master: Master;
 
-  @Output() taskSelect = new EventEmitter<Task>();
-
-  selectFlag: boolean;
   selectTask(task: Task) {
-
     this.selectFlag = true;
-
-
     this.taskSelect.emit(task);
   }
 

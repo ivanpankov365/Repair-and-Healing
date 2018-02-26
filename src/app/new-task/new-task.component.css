@@ -83,3 +83,9 @@ select {
   color: red;
   margin-bottom: 0;
 }
+
+.new_task {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}

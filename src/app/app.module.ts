@@ -12,10 +12,19 @@ import { MasterBranchComponent } from './master-branch/master-branch.component';
 import { MasterTaskListComponent } from './master-task-list/master-task-list.component';
 import { NewMasterComponent } from './new-master/new-master.component';
 import { TestAuthComponent } from './test-auth/test-auth.component';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpClientModule],
-    declarations: [ AppComponent, NewTaskComponent, AdminBranchComponent, TaskListComponent, MasterListComponent, MasterBranchComponent, MasterTaskListComponent, NewMasterComponent, TestAuthComponent],
+    imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+    declarations: [ AppComponent,
+      NewTaskComponent,
+      AdminBranchComponent,
+      TaskListComponent,
+      MasterListComponent,
+      MasterBranchComponent,
+      MasterTaskListComponent,
+      NewMasterComponent,
+      TestAuthComponent],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

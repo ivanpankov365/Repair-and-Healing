@@ -5,17 +5,20 @@ h2 {
   color: #3C6650;
   margin-bottom: 0;
 }
+
 input {
   width: 218px;
   height: 20px;
-  border: 1px solid  #75A3A3;
+  border: 1px solid #75A3A3;
   border-radius: 2px;
 }
-.panel{
-  display: flex;
+
+.admin_panel {
   align-items: center;
-  justify-content: center;
+  position: absolute;
   height: 100%;
+  top: 20%;
+  left: 33%;
 }
 
 .button {
@@ -31,7 +34,8 @@ input {
   background-color: #519171;
   border-bottom: 3px solid #006666;
 }
-.button_add{
+
+.button_add {
   position: absolute;
   height: 70px;
   width: 250px;
@@ -50,7 +54,7 @@ input {
   border-bottom: 3px solid #006666;
 }
 
-.button_other{
+.button_other {
   position: absolute;
   height: 80px;
   width: 250px;
@@ -95,18 +99,48 @@ input {
 
 }
 
-.text{
+.text {
   text-align: center;
 }
 
-.button_add:hover{
+.button_add:hover {
   background-color: #3C6650;
 }
 
-.button_other:hover{
+.button_other:hover {
   background-color: #3C6650;
 }
 
-.button:hover{
+.button:hover {
   background-color: #3C6650;
+}
+
+.admin_verify {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+
+a {
+  position: relative;
+  padding: 8px 30px;
+  margin: 0px 8px 8px 0px;
+  float: left;
+  border-radius: 4px;
+  font-family: "Courier New", Courier;
+  font-size: 20px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #519171;
+  border-bottom: 3px solid #006666;
+}
+
+a:hover {
+  background-color: #3C6650;
+}
+
+.verify_false {
+  position: absolute;
+  top: 45%;
+  left: 5%;
 }

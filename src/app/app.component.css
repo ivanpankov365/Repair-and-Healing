@@ -32,4 +32,20 @@ h1 {
   background-color: #3C6650;
 }
 
+a {
+  position: relative;
+  padding: 8px 30px;
+  margin: 0px 8px 8px 0px;
+  float: left;
+  border-radius: 4px;
+  font-family: "Courier New", Courier;
+  font-size: 20px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #519171;
+  border-bottom: 3px solid #006666;
+}
 
+a:hover {
+  background-color: #3C6650;
+}

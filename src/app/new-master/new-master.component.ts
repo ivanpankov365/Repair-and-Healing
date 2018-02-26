@@ -3,6 +3,7 @@ import {Master} from '../master';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Task} from '../task';
 import {Localhost} from '../localhost';
+import {RequestService} from '../request-service';
 
 @Component({
   selector: 'app-new-master',
@@ -13,22 +14,21 @@ export class NewMasterComponent {
 
   master: Master = new Master();
   localhost: Localhost = new Localhost();
+  newMasterFlag: boolean;
+  newMasterAddFlag: boolean;
+  receivedMaster: Master;
+  @Output() masterAdded = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) {
   }
 
-  newMasterFlag: boolean;
-  newMasterAddFlag: boolean;
 
 
   postMaster(master: Master) {
-    var headers = new HttpHeaders().set('Authorization', 'Bearer ' +
-      localStorage.getItem('jwt'));
-    var options = {headers: headers, withCredentials: true};
-    return this.http.post(this.localhost.addNewMaster, master, options);
+    let options = new RequestService();
+    return this.http.post(this.localhost.addNewMaster, master, options.getOptions());
   }
 
-  receivedMaster: Master;
 
   onSubmit(master: Master) {
     this.newMasterFlag = false;
@@ -42,6 +42,5 @@ export class NewMasterComponent {
     );
   }
 
-  @Output() masterAdded = new EventEmitter<boolean>();
 
 }
